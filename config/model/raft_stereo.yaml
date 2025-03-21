@@ -1,0 +1,13 @@
+name: RAFTStereo
+instance:
+  _target_: model.raft_stereo.raft_stereo.RAFTStereo
+  args:
+    hidden_dims: [128, 128, 128]
+    corr_implementation: reg
+    shared_backbone: False
+    corr_levels: 4
+    corr_radius: 4
+    n_downsample: 2
+    context_norm: batch
+    slow_fast_gru: False
+    n_gru_layers: 3

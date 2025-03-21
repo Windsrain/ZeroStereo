@@ -1,0 +1,42 @@
+defaults:
+  - model: raft_stereo
+  - _self_
+
+gpus: ${oc.env:CUDA_VISIBLE_DEVICES, '0,1,2,3'}
+checkpoint: checkpoint/raft_stereo/model.safetensors
+mixed_precision: no
+valid_iters: 32
+
+dataset:
+  KITTI:
+    outlier: 3
+    instance:
+      _target_: dataset.stereo_dataset.KITTI
+      root: /data/datasets/kitti
+      mask: all
+  Middlebury:
+    outlier: 2
+    instance:
+      _target_: dataset.stereo_dataset.Middlebury
+      root: /data/datasets/middlebury
+      mask: noc
+      resolution: H
+  ETH3D:
+    outlier: 1
+    instance:
+      _target_: dataset.stereo_dataset.ETH3D
+      root: /data/datasets/eth3d
+      mask: noc
+
+dataloader:
+  split: True
+  batch_size_per_gpu: 1
+  total_batch_size: null
+  param:
+    batch_size: null
+    num_workers: 8
+    pin_memory: True
+    shuffle: False
+    drop_last: False
+
+  
