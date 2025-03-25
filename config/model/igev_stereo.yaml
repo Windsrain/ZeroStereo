@@ -1,0 +1,10 @@
+name: IGEVStereo
+instance:
+  _target_: model.igev_stereo.igev_stereo.IGEVStereo
+  args:
+    hidden_dims: [128, 128, 128]
+    corr_levels: 2
+    corr_radius: 4
+    n_downsample: 2
+    n_gru_layers: 3
+    max_disp: 192

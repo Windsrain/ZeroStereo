@@ -14,7 +14,9 @@ Used title: StereoGen: High-quality Stereo Image Generation from a Single Image
 conda create -n zerostereo python=3.12
 conda activate zerostereo
 
-pip install accelerate hydra-core numpy opencv-python opt_einsum pillow scipy torch torchvision tqdm
+pip install hydra-core tqdm opt_einsum numpy
+pip install opencv-python scipy torch torchvision
+pip install accelerate timm==0.5.4
 ```
 
 ## Pre-trained Models
@@ -23,8 +25,16 @@ You can download our pre-trained models from [Google Drive](https://drive.google
 
 ## Evaluation
 
+To evaluate Zero-RAFT-Stereo, run:
+
 ```
-acclerate launch evaluate_stereo.py
+accelerate launch evaluate_stereo.py
+```
+
+To evaluate Zero-IGEV-Stereo, modify config/evaluate_stereo.yaml or run:
+
+```
+accelerate launch evaluate_stereo.py model=igev_stereo checkpoint=checkpoint/igev_stereo/model_700.safetensors  
 ```
 
 ## Notification

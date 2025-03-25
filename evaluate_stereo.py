@@ -33,6 +33,10 @@ def main(cfg):
                 if cfg.model.name == 'RAFTStereo':
                     _, disp_pred = model(left, right, iters=cfg.valid_iters, test_mode=True)
                     disp_pred = -disp_pred
+                elif cfg.model.name == 'IGEVStereo':
+                    disp_pred = model(left, right, iters=cfg.valid_iters, test_mode=True)
+                else:
+                    raise Exception(f'Invalid model name: {cfg.model.name}.')
                 
             disp_pred = padder.unpad(disp_pred)
             assert disp_pred.shape == disp_gt.shape
