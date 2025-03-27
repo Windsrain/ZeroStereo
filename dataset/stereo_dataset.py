@@ -1,8 +1,8 @@
 import os
-from glob import glob
 from PIL import Image
+from glob import glob
 import torch
-from util import *
+from util.reader import *
 
 class StereoDataset(torch.utils.data.Dataset):
     def __init__(self, mask=None, reader=None):

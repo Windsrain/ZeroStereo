@@ -5,7 +5,7 @@ from accelerate import Accelerator, load_checkpoint_and_dispatch
 from accelerate.logging import get_logger
 from model import fetch_model
 from dataset import fetch_dataloader
-from util import InputPadder
+from util.padder import InputPadder
 
 @hydra.main(version_base=None, config_path='config', config_name='evaluate_stereo')
 def main(cfg):
