@@ -1,11 +1,11 @@
 import hydra
 import torch
 from tqdm import tqdm
-from accelerate import Accelerator, load_checkpoint_and_dispatch
 from accelerate.logging import get_logger
+from accelerate import Accelerator, load_checkpoint_and_dispatch
 from model import fetch_model
-from dataset import fetch_dataloader
 from util.padder import InputPadder
+from dataset import fetch_dataloader
 
 @hydra.main(version_base=None, config_path='config', config_name='evaluate_stereo')
 def main(cfg):

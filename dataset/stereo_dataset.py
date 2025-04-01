@@ -1,7 +1,7 @@
 import os
-from PIL import Image
 from glob import glob
 import torch
+from PIL import Image
 from util.reader import *
 
 class StereoDataset(torch.utils.data.Dataset):

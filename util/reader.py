@@ -1,8 +1,8 @@
 import re
 import os
-from PIL import Image
 import cv2
 import numpy as np
+from PIL import Image
 
 def pfm_reader(filename):
     file = open(filename, 'rb')
