@@ -74,4 +74,4 @@ Complete fine-tuning code will be released soon. The generation code is an initi
 
 ## Acknowledgement
 
-This project is based on [MfS-Stereo](https://github.com/nianticlabs/stereo-from-mono), [Marigold](https://github.com/prs-eth/Marigold), [RAFT-Stereo](https://github.com/princeton-vl/RAFT-Stereo), and [IGEV-Stereo](https://github.com/gangweix/IGEV). We thank the original authors for their excellent works.
+This project is based on [MfS-Stereo](https://github.com/nianticlabs/stereo-from-mono), [Depth Anything V2](https://github.com/DepthAnything/Depth-Anything-V2), [Marigold](https://github.com/prs-eth/Marigold), [RAFT-Stereo](https://github.com/princeton-vl/RAFT-Stereo), and [IGEV-Stereo](https://github.com/gangweix/IGEV). We thank the original authors for their excellent works.
