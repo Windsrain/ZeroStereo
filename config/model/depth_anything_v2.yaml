@@ -1,0 +1,8 @@
+name: DepthAnythingV2
+instance:
+  _target_: model.depth_anything_v2.DepthAnythingV2
+  encoder: vitl
+  features: 256
+  out_channels: [256, 512, 1024, 1024]
+  use_bn: False
+  use_clstoken: False

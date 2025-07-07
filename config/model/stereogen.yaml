@@ -1,0 +1,4 @@
+name: StereoGen
+instance:
+  _target_: model.stereogen.StereoGen.from_pretrained
+  pretrained_model_name_or_path: checkpoint/stereogen

@@ -1,18 +1,19 @@
 import hydra
 import torch
 from tqdm import tqdm
+from hydra.utils import instantiate
+from accelerate import load_checkpoint_and_dispatch
 from accelerate.logging import get_logger
-from accelerate import Accelerator, load_checkpoint_and_dispatch
 from model import fetch_model
-from util.padder import InputPadder
 from dataset import fetch_dataloader
+from util.padder import InputPadder
 
 @hydra.main(version_base=None, config_path='config', config_name='evaluate_stereo')
 def main(cfg):
-    accelerator = Accelerator()
     logger = get_logger(__name__)
+    accelerator = instantiate(cfg.accelerator)
     
-    dataloader = fetch_dataloader(cfg, logger)
+    dataloader = fetch_dataloader(cfg, cfg.dataset, cfg.dataloader, logger)
     model = fetch_model(cfg, logger)
     model = load_checkpoint_and_dispatch(model, cfg.checkpoint)
     logger.info(f'Loading checkpoint from {cfg.checkpoint}.')
@@ -31,10 +32,10 @@ def main(cfg):
 
             with torch.no_grad():
                 if cfg.model.name == 'RAFTStereo':
-                    _, disp_pred = model(left, right, iters=cfg.valid_iters, test_mode=True)
+                    _, disp_pred = model(left, right, iters=cfg.model.valid_iters, test_mode=True)
                     disp_pred = -disp_pred
                 elif cfg.model.name == 'IGEVStereo':
-                    disp_pred = model(left, right, iters=cfg.valid_iters, test_mode=True)
+                    disp_pred = model(left, right, iters=cfg.model.valid_iters, test_mode=True)
                 else:
                     raise Exception(f'Invalid model name: {cfg.model.name}.')
                 
@@ -48,7 +49,7 @@ def main(cfg):
             total_elem += epe.shape[0]
             total_epe += epe.sum().item()
             total_out += out.sum().item()
-        accelerator.print(f'{name}/EPE: {total_epe / total_elem:.2f}, {name}/Bad {cfg.dataset[name].outlier}px: {100 * total_out / total_elem:.2f}.')
+        accelerator.print(f'{name}/EPE: {total_epe / total_elem:.2f}, {name}/Bad {cfg.dataset[name].outlier}px: {100 * total_out / total_elem:.2f}')
 
     accelerator.end_training()
 

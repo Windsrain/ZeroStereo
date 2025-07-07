@@ -1,0 +1,19 @@
+defaults:
+  - model: raft_stereo
+  - _self_
+
+gpus: ${oc.env:CUDA_VISIBLE_DEVICES, '0,1,2,3'}
+checkpoint: checkpoint/zero_raft_stereo/model.safetensors
+
+accelerator:
+  _target_: accelerate.Accelerator
+
+left_list: /data/datasets/middlebury/MiddEval3/trainingH/*/im0.png
+right_list: /data/datasets/middlebury/MiddEval3/trainingH/*/im1.png
+
+disp_dir: result/middlebury/MiddEval3/trainingH
+base_index: -2
+
+
+
+  

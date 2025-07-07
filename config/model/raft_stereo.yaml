@@ -1,6 +1,9 @@
 name: RAFTStereo
+max_disp: 700
+train_iters: 22
+valid_iters: 32
 instance:
-  _target_: model.raft_stereo.raft_stereo.RAFTStereo
+  _target_: model.raft_stereo.RAFTStereo
   args:
     hidden_dims: [128, 128, 128]
     corr_implementation: reg

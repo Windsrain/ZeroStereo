@@ -1,0 +1,111 @@
+defaults:
+  - model: raft_stereo.yaml
+  - _self_
+
+seed: 666
+gpus: ${oc.env:CUDA_VISIBLE_DEVICES, '0,1,2,3'}
+
+accelerator:
+  _target_: accelerate.Accelerator
+  mixed_precision: fp16
+  dataloader_config:
+    _target_: accelerate.DataLoaderConfiguration
+    split_batches: True
+    use_seedable_sampler: True 
+  log_with: wandb
+
+tracker:
+  project_name: ZeroStereo
+  init_kwargs:
+    wandb:
+      entity: windsrain
+      name: Zero-RAFT-Stereo
+
+train_set:
+  MfS35K:
+    instance:
+      _target_: dataset.zero_dataset.MfS35K
+      aug_params:
+        crop_size: [384, 512]
+        random_gaussian:
+          noise_std: 0.02
+          blur_prob: 0.5
+        color_jitter:
+          brightness: [0.6, 1.4]
+          contrast: [0.6, 1.4]
+          saturation: [0, 1.4]
+          hue: 0.5
+          asymmetric_prob: 0.2
+        random_erase:
+          max_time: 2
+          bound: [50, 100]
+          prob: 0.5
+        random_scale:
+          min_scale: -0.2
+          max_scale: 0.4
+          max_stretch: 0.2
+          stretch_prob: 0.8
+          scale_prob: 1.0
+        y_jitter: True
+      root: /data/datasets/mfs35k
+      filelist: filelist/mfs35k.txt
+
+valid_set:
+  KITTI:
+    outlier: 3
+    instance:
+      _target_: dataset.stereo_dataset.KITTI
+      root: /data/datasets/kitti
+      mask: all
+  Middlebury:
+    outlier: 2
+    instance:
+      _target_: dataset.stereo_dataset.Middlebury
+      root: /data/datasets/middlebury
+      mask: noc
+      resolution: H
+  ETH3D:
+    outlier: 1
+    instance:
+      _target_: dataset.stereo_dataset.ETH3D
+      root: /data/datasets/eth3d
+      mask: noc
+
+train_loader:
+  split: False
+  batch_size_per_gpu: null
+  total_batch_size: 8
+  param:
+    batch_size: null
+    num_workers: null
+    pin_memory: True
+    shuffle: True
+    drop_last: True
+
+valid_loader:
+  split: True
+  batch_size_per_gpu: 1
+  total_batch_size: null
+  param:
+    batch_size: null
+    num_workers: null
+    pin_memory: True
+    shuffle: False
+    drop_last: False
+
+optimizer:
+  _target_: torch.optim.AdamW
+  lr: 2e-4
+
+scheduler:
+  _target_: torch.optim.lr_scheduler.OneCycleLR
+  max_lr: 2e-4
+  total_steps: 200000
+  pct_start: 0.01
+  cycle_momentum: False
+  anneal_strategy: linear
+
+max_norm: 1.0
+save_freq: 10000
+save_path: checkpoint/zero_raft_stereo
+valid_freq: 10000

@@ -3,9 +3,13 @@ defaults:
   - _self_
 
 gpus: ${oc.env:CUDA_VISIBLE_DEVICES, '0,1,2,3'}
-checkpoint: checkpoint/raft_stereo/model.safetensors
-mixed_precision: no
-valid_iters: 32
+checkpoint: checkpoint/zero_raft_stereo/model.safetensors
+
+accelerator:
+  _target_: accelerate.Accelerator
+  dataloader_config:
+    _target_: accelerate.DataLoaderConfiguration
+    split_batches: True
 
 dataset:
   KITTI:
@@ -34,7 +38,7 @@ dataloader:
   total_batch_size: null
   param:
     batch_size: null
-    num_workers: 8
+    num_workers: null
     pin_memory: True
     shuffle: False
     drop_last: False

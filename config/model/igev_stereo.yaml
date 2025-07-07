@@ -1,6 +1,9 @@
 name: IGEVStereo
+max_disp: 192
+train_iters: 22
+valid_iters: 32
 instance:
-  _target_: model.igev_stereo.igev_stereo.IGEVStereo
+  _target_: model.igev_stereo.IGEVStereo
   args:
     hidden_dims: [128, 128, 128]
     corr_levels: 2
