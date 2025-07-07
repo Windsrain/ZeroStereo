@@ -70,7 +70,7 @@ accelerate launch save_disparity.py
 
 ## ✈️ Notification
 
-Complete fine-tuning code will be released soon. The generation code is an initial version, and we will release a final version for better results.
+Complete fine-tuning code will be released soon. The generation code is an initial version, and we will release a final version for better results. We will upload our MfS35K for training directly.
 
 ## Acknowledgement
 
