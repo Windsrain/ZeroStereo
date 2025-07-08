@@ -35,7 +35,7 @@ The filepath format should be consistent with the filelist.
 
 ## ✈️ Pre-trained Model
 
-You can download our pre-trained models from [Google Drive](https://drive.google.com/drive/folders/1UufIY7I3NXiLVm7Hbj3_htJEgttx7-R6?usp=drive_link).
+You can download our pre-trained models from [Hugging Face](https://huggingface.co/Windsrain/ZeroStereo/tree/main)🤗.
 
 ## ✈️ Generation
 
