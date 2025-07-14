@@ -1,3 +1,4 @@
+import cv2
 import hydra
 import scipy
 import torch
@@ -13,8 +14,6 @@ from model import fetch_model
 from dataset import fetch_dataloader
 from util.util import convert_filepath, generate_disparity
 from util.padder import InputPadder
-
-import numpy as np
 
 def inference(model, image, scale, mean, std):
     h, w = image.shape[-2:]
@@ -80,6 +79,8 @@ def main(cfg):
 
         h, w = disparity.shape[-2:]
         xs, ys = np.meshgrid(np.arange(w), np.arange(h))
+        kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
+        disparity = cv2.dilate(disparity, kernel, iterations=cfg.dilate_iteration)
         edge = skimage.filters.sobel(disparity) > 3
         disparity[edge] = 0
         disparity = scipy.interpolate.griddata(np.stack([ys[~edge].ravel(), xs[~edge].ravel()], 1), disparity[~edge].ravel(), np.stack([ys.ravel(), xs.ravel()], 1), method='nearest').reshape(h, w)

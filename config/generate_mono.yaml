@@ -29,3 +29,5 @@ dataloader:
     pin_memory: True
     shuffle: False
     drop_last: False
+
+dilate_iteration: 1

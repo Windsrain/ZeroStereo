@@ -56,14 +56,6 @@ def get_non_occlusion_mask(shifted):
 def warp_image(image, disp):
     h, w, c = image.shape
     xs, ys = np.meshgrid(np.arange(w), np.arange(h))
-    '''
-    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
-    disp = cv2.dilate(disp, kernel, iterations=1)
-    
-    edge = skimage.filters.sobel(disp) > 3
-    disp[edge] = 0
-    disp = scipy.interpolate.griddata(np.stack([ys[~edge].ravel(), xs[~edge].ravel()], 1), disp[~edge].ravel(), np.stack([ys.ravel(), xs.ravel()], 1), method='nearest').reshape(h, w)
-    '''
     warped_image = np.zeros_like(image)
     warped_image = np.stack([warped_image] * 2, 0)
 
