@@ -39,12 +39,10 @@ def main(cfg):
 
     dataset, dataloader = fetch_dataloader(cfg, cfg.dataset, cfg.dataloader, logger, True)
     model = fetch_model(cfg, logger)
-    model.vae.eval()
-    model.unet.eval()
-    model.text_encoder.eval()
     
-    dataloader, model = accelerator.prepare(dataloader, model)
-    model.to(accelerator.device, torch.float16)
+    dataloader = accelerator.prepare(dataloader)
+    model.to(accelerator.device, torch.float16 if cfg.accelerator.mixed_precision == 'fp16' else torch.float32)
+    model.unet.eval()
 
     set_seed(cfg.seed, device_specific=True)
     for index, data in enumerate(tqdm(dataloader, dynamic_ncols=True, disable=not accelerator.is_main_process)):
