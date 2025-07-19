@@ -4,7 +4,7 @@ Xianqi Wang, Hao Yang, Gangwei Xu, Junda Cheng, Min Lin, Yong Deng, Jinliang Zan
 
 Huazhong University of Science and Technology, Autel Robotics, Optics Valley Laboratory
 
-<a href="https://arxiv.org/abs/2501.08654"><img src="https://img.shields.io/badge/arXiv-2402.11095-b31b1b?logo=arxiv" alt='arxiv'></a>
+<a href="https://arxiv.org/abs/2501.08654"><img src="https://img.shields.io/badge/arXiv-2501.08654-b31b1b?logo=arxiv" alt='arxiv'></a>
 
 Used title: StereoGen: High-quality Stereo Image Generation from a Single Image
 
