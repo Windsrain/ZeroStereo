@@ -1,4 +1,4 @@
-# 🏆 [ICCV 2025] ZeroStereo: Zero-shot Stereo Matching from Single Images 🏆
+# 🏆 [ICCV 2025] ZeroStereo: Zero-Shot Stereo Matching from Single Images 🏆
 
 Xianqi Wang, Hao Yang, Gangwei Xu, Junda Cheng, Min Lin, Yong Deng, Jinliang Zang, Yurui Chen, Xin Yang
 
@@ -12,6 +12,7 @@ Used title: StereoGen: High-quality Stereo Image Generation from a Single Image
 
 ## 🔄 Update
 
+* **07/29/2025:** Update the fine-tuning code for SDv2I.
 * **07/14/2025:** Update the generation code to improve the quality of the right image edges.
 
 ## ⚙️ Environment
@@ -27,6 +28,20 @@ pip install xformers accelerate scikit-image timm==0.5.4
 
 ## 📂 Required Data
 
+Data for fine-tuning:
+
+* [TartanAir](https://github.com/castacks/tartanair_tools)
+
+* [CREStereo Dataset](https://github.com/megvii-research/CREStereo)
+
+* [Falling Things](https://research.nvidia.com/publication/2018-06_falling-things-synthetic-dataset-3d-object-detection-and-pose-estimation)
+
+* [Scene Flow](https://lmb.informatik.uni-freiburg.de/resources/datasets/SceneFlowDatasets.en.html)
+
+* [VKITTI 2](https://europe.naverlabs.com/proxy-virtual-worlds-vkitti-2/)
+
+Data for generation: 
+
 * [DiW](https://wfchen-umich.github.io/wfchen.github.io/depth-in-the-wild/)
 
 * [COCOStuff](https://github.com/nightrome/cocostuff)
@@ -39,13 +54,25 @@ pip install xformers accelerate scikit-image timm==0.5.4
 
 The filepath format should be consistent with the filelist.
 
+Data for evaluation:
+
+* [KITTI 2015](https://www.cvlibs.net/datasets/kitti/eval_scene_flow.php?benchmark=stereo)
+
+* [Middlebury](https://vision.middlebury.edu/stereo/submit3/)
+
+* [ETH3D](https://www.eth3d.net/datasets)
+
 ## 🎁 Pre-Trained Model
 
-| Model | Link |
-| :-: | :-: |
-| StereoGen | [Download 🤗](https://huggingface.co/Windsrain/ZeroStereo/tree/main/StereoGen) |
-| Zero-RAFT-Stereo | [Download 🤗](https://huggingface.co/Windsrain/ZeroStereo/tree/main/Zero-RAFT-Stereo)|
-| Zero-IGEV-Stereo | [Download 🤗](https://huggingface.co/Windsrain/ZeroStereo/tree/main/Zero-IGEV-Stereo)|
+You can download our pre-trained models from [Google Drive](https://drive.google.com/drive/folders/1UufIY7I3NXiLVm7Hbj3_htJEgttx7-R6?usp=drive_link).
+
+## 🚀 Fine-tuning
+
+To fine-tune SDv2I, run:
+
+```
+accelerate launch train_stereogen.py
+```
 
 ## 🛠️ Generation
 
