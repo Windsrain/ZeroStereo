@@ -67,8 +67,8 @@ def warp_image(image, disp):
     weights = np.ones((2, h, w)) * 10000
     for col in range(w - 1, -1, -1):
         loc = masked_pix_locations[:, col]
-        loc_up = np.ceil(loc).astype(np.int32)
-        loc_down = np.floor(loc).astype(np.int32)
+        loc_up = np.clip(np.ceil(loc).astype(np.int32), 0, w - 1)
+        loc_down = np.clip(np.floor(loc).astype(np.int32), 0, w - 1)
         weight_up = loc_up - loc
         weight_down = 1 - weight_up
 

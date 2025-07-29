@@ -1,4 +1,4 @@
-# 🏆 [ICCV 2025] ZeroStereo: Zero-Shot Stereo Matching from Single Images 🏆
+# 🏆 [ICCV 2025] ZeroStereo: Zero-shot Stereo Matching from Single Images 🏆
 
 Xianqi Wang, Hao Yang, Gangwei Xu, Junda Cheng, Min Lin, Yong Deng, Jinliang Zang, Yurui Chen, Xin Yang
 

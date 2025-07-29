@@ -1,6 +1,7 @@
 import re
 import os
 import cv2
+import json
 import numpy as np
 from PIL import Image
 
@@ -37,6 +38,41 @@ def pfm_reader(filename):
     data = np.flipud(data)
 
     return data
+
+def tartanair_disp_reader(filename):
+    depth = np.load(filename)
+    disp = 80.0 / depth
+    valid = disp > 0
+
+    return disp, valid
+
+def crestereo_disp_reader(filename):
+    disp = np.array(Image.open(filename))
+    valid = disp > 0.0
+
+    return disp.astype(np.float32) / 32., valid
+
+def fallingthings_disp_reader(filename):
+    a = np.array(Image.open(filename))
+    with open('/'.join(filename.split('/')[:-1] + ['_camera_settings.json']), 'r') as f:
+        intrinsics = json.load(f)
+    fx = intrinsics['camera_settings'][0]['intrinsic_settings']['fx']
+    disp = (fx * 6.0 * 100) / a.astype(np.float32)
+    valid = disp > 0
+
+    return disp, valid
+
+def vkitti2_disp_reader(filename):
+    depth = cv2.imread(filename, cv2.IMREAD_ANYCOLOR | cv2.IMREAD_ANYDEPTH)
+    depth = (depth / 100).astype(np.float32)
+    valid = (depth > 0) & (depth < 655)
+    
+    focal_length = 725.0087
+    baseline = 0.532725
+    disp = baseline * focal_length / depth
+    disp[~valid] = 0.0
+
+    return disp, valid
 
 def kitti_disp_reader(filename, mask):
     disp = None
