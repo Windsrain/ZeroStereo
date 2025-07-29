@@ -1,4 +1,4 @@
-# 🏆 [ICCV 2025] ZeroStereo: Zero-Shot Stereo Matching from Single Images 🏆
+# 🏆 [ICCV 2025] ZeroStereo: Zero-shot Stereo Matching from Single Images 🏆
 
 Xianqi Wang, Hao Yang, Gangwei Xu, Junda Cheng, Min Lin, Yong Deng, Jinliang Zang, Yurui Chen, Xin Yang
 
@@ -64,7 +64,12 @@ Data for evaluation:
 
 ## 🎁 Pre-Trained Model
 
-You can download our pre-trained models from [Google Drive](https://drive.google.com/drive/folders/1UufIY7I3NXiLVm7Hbj3_htJEgttx7-R6?usp=drive_link).
+| Model | Link |
+| :-: | :-: |
+| SDv2I | [Download 🤗](https://huggingface.co/stabilityai/stable-diffusion-2-inpainting/tree/main) |
+| StereoGen | [Download 🤗](https://huggingface.co/Windsrain/ZeroStereo/tree/main/StereoGen) |
+| Zero-RAFT-Stereo | [Download 🤗](https://huggingface.co/Windsrain/ZeroStereo/tree/main/Zero-RAFT-Stereo)|
+| Zero-IGEV-Stereo | [Download 🤗](https://huggingface.co/Windsrain/ZeroStereo/tree/main/Zero-IGEV-Stereo)|
 
 ## 🚀 Fine-tuning
 
