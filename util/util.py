@@ -21,9 +21,9 @@ def generate_disparity(normalized_inverse_depth, a=0.1, b=0.05):
 
     scale = np.random.rand()
     if scale < 0.1:
-        max_disarpity_range = (min(a - 2 * b, 0.01) * w, (a - b) * w)
+        max_disparity_range = (min(a - 2 * b, 0.01) * w, (a - b) * w)
     elif scale > 0.9:
-        max_disarpity_range = ((a + b) * w, (a + 2 * b) * w)
+        max_disparity_range = ((a + b) * w, (a + 2 * b) * w)
 
     scaling_factor = (max_disparity_range[0] + np.random.rand() * (max_disparity_range[1] - max_disparity_range[0]))
     disparity = normalized_inverse_depth * scaling_factor
