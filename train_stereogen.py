@@ -23,7 +23,7 @@ def main(cfg):
     optimizer = instantiate(cfg.optimizer, _partial_=True)(model.unet.parameters())
     scheduler = instantiate(cfg.scheduler, _partial_=True)(optimizer)
     loss_function = torch.nn.MSELoss(reduction='mean')
-    noise_scheduler = DDPMScheduler.from_pretrained('/home/wxq/ZeroStereo-local/checkpoint/stable-diffusion-2-inpainting/scheduler')
+    noise_scheduler = DDPMScheduler.from_pretrained(cfg.model.instance.pretrained_model_name_or_path + '/scheduler')
 
     train_loader, model.unet, optimizer, scheduler = accelerator.prepare(train_loader, model.unet, optimizer, scheduler)
     model.vae.to(accelerator.device, torch.float16 if cfg.accelerator.mixed_precision == 'fp16' else torch.float32)
