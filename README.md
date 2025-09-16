@@ -12,6 +12,7 @@ Used title: StereoGen: High-quality Stereo Image Generation from a Single Image
 
 ## 🔄 Update
 
+* **09/16/2025:** Update MfS35K for training.
 * **07/29/2025:** Update the fine-tuning code for SDv2I.
 * **07/14/2025:** Update the generation code to improve the quality of the right image edges.
 
@@ -54,6 +55,12 @@ Data for generation:
 
 The filepath format should be consistent with the filelist.
 
+Data for training:
+
+* [MfS35K](https://pan.baidu.com/s/1B0_gfJXoX8s8GUXROOjnew?pwd=sidv)
+
+We have uploaded MfS35K to Baidu Netdisk, and we will upload it to other websites for downloading.
+
 Data for evaluation:
 
 * [KITTI 2015](https://www.cvlibs.net/datasets/kitti/eval_scene_flow.php?benchmark=stereo)
@@ -93,7 +100,7 @@ accelerate launch generate_stereo.py
 To train Zero-RAFT-Stereo and Zero-IGEV-Stereo, run:
 
 ```
-accelerate launch train_stereo.py
+CUDA_VISIBLE_DEVICES='0,1' accelerate launch train_stereo.py
 ```
 
 ## 📊 Evaluation
@@ -120,7 +127,7 @@ accelerate launch save_disparity.py
 
 ## 🔔 Notification
 
-Complete fine-tuning code will be released soon. The generation code is an initial version, and we will release a final version for better results. We will upload our MfS35K for training directly.
+We will upload our MfS35K for training directly.
 
 ## 🙏 Acknowledgement
 
