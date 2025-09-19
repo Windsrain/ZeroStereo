@@ -13,7 +13,7 @@ Used title: StereoGen: High-quality Stereo Image Generation from a Single Image
 ## 🔄 Update
 
 * **09/16/2025:** Update MfS35K to Hugging Face.
-* **09/16/2025:** Update MfS35K for training.
+* **09/16/2025:** Update MfS35K to Baidu Netdisk.
 * **07/29/2025:** Update the fine-tuning code for SDv2I.
 * **07/14/2025:** Update the generation code to improve the quality of the right image edges.
 
@@ -61,8 +61,6 @@ The filepath format should be consistent with the filelist.
 * [MfS35K on Baidu Netdisk](https://pan.baidu.com/s/1B0_gfJXoX8s8GUXROOjnew?pwd=sidv)
 
 * [MfS35K on Hugging Face](https://huggingface.co/datasets/Windsrain/MfS35K)
-
-We have uploaded MfS35K to Baidu Netdisk, and we will upload it to other websites for downloading.
 
 **Data for evaluation**:
 
