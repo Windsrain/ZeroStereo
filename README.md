@@ -79,6 +79,8 @@ The filepath format should be consistent with the filelist.
 | Zero-RAFT-Stereo | [Download 🤗](https://huggingface.co/Windsrain/ZeroStereo/tree/main/Zero-RAFT-Stereo)|
 | Zero-IGEV-Stereo | [Download 🤗](https://huggingface.co/Windsrain/ZeroStereo/tree/main/Zero-IGEV-Stereo)|
 
+ The link to the original SDv2I is invalid. Please use the copy from others, like [Download 🤗](https://huggingface.co/alwold/stable-diffusion-2-inpainting/tree/main).
+
 ## 🚀 Fine-tuning
 
 To fine-tune SDv2I, run:
