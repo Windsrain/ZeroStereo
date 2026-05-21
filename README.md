@@ -74,7 +74,7 @@ The filepath format should be consistent with the filelist.
 
 | Model | Link |
 | :-: | :-: |
-| SDv2I | [Download 🤗](https://huggingface.co/stabilityai/stable-diffusion-2-inpainting/tree/main) |
+| SDv2I | [Download 🤗](https://huggingface.co/alwold/stable-diffusion-2-inpainting/tree/main) |
 | StereoGen | [Download 🤗](https://huggingface.co/Windsrain/ZeroStereo/tree/main/StereoGen) |
 | Zero-RAFT-Stereo | [Download 🤗](https://huggingface.co/Windsrain/ZeroStereo/tree/main/Zero-RAFT-Stereo)|
 | Zero-IGEV-Stereo | [Download 🤗](https://huggingface.co/Windsrain/ZeroStereo/tree/main/Zero-IGEV-Stereo)|
